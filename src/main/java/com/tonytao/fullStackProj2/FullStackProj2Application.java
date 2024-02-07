@@ -1,0 +1,13 @@
+package com.tonytao.fullStackProj2;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class FullStackProj2Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(FullStackProj2Application.class, args);
+	}
+
+}
