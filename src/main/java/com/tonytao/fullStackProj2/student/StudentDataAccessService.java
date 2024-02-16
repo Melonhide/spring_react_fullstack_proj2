@@ -36,7 +36,13 @@ public class StudentDataAccessService {
             String genderStr = resultSet.getString("gender").toUpperCase();
 
             Student.Gender gender = Student.Gender.valueOf(genderStr);
-            return null;
+            return new Student(
+                    studentId,
+                    firstName,
+                    lastName,
+                    email,
+                    gender
+            );
         });
         return null;
     }
