@@ -31,7 +31,7 @@ public class StudentDataAccessService {
     }
 
     private static RowMapper<Student> mapStudentFromDb() {
-        return (rs, rowNum) -> {
+        return (resultSet, rowNum) -> {
             String studentIdStr = resultSet.getString("student_id");
             UUID studentId = UUID.fromString(studentIdStr);
 
