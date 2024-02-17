@@ -2,6 +2,7 @@ package com.tonytao.fullStackProj2.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +18,7 @@ public class StudentDataAccessService {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Student> selectAllStudents(){
+    List<Student> selectAllStudents(){
         String sql = "" +
                 "SELECT " +
                 "student_id, " +
@@ -26,7 +27,11 @@ public class StudentDataAccessService {
                 "email, " +
                 "gender " +
                 "FROM student";
-        List<Student> students = jdbcTemplate.query(sql,(rs, rowNum) -> {
+        return jdbcTemplate.query(sql, mapStudentFromDb());
+    }
+
+    private static RowMapper<Student> mapStudentFromDb() {
+        return (rs, rowNum) -> {
             String studentIdStr = resultSet.getString("student_id");
             UUID studentId = UUID.fromString(studentIdStr);
 
@@ -43,8 +48,7 @@ public class StudentDataAccessService {
                     email,
                     gender
             );
-        });
-        return null;
+        };
     }
 
 
