@@ -5,7 +5,7 @@ import { Input, Button } from 'antd';
 
 const inputBottomMargin = {marginBottom: '10px'};
 
-class AddStudentFrom extends Component {
+class AddStudentForm extends Component {
     render() {
         return (
             <Formik
@@ -55,7 +55,7 @@ class AddStudentFrom extends Component {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.lastName}
-                            placeholder='First name. E.g John'
+                            placeholder='Last name. E.g Wick'
                         />
                         {errors.lastName && touched.lastName && errors.lastName}
                         
@@ -66,7 +66,7 @@ class AddStudentFrom extends Component {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.email}
-                            placeholder='Last name. E.g Wick'
+                            placeholder='Email. E.g example@gmail.com'
                         />
                         {errors.email && touched.email && errors.email}
                         
@@ -76,7 +76,7 @@ class AddStudentFrom extends Component {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.gender}
-                            placeholder='Email. E.g example@gmail.com'
+                            placeholder='Gender. E.g Male or Female'
                         />
                         {errors.gender && touched.gender && errors.gender}
                         
@@ -90,4 +90,4 @@ class AddStudentFrom extends Component {
     }
 }
 
-export default AddStudentFrom;
+export default AddStudentForm;
