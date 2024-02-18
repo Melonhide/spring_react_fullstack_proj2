@@ -11,7 +11,7 @@ const Footer = (props) => (
                     style={{backgroundColor: '#f56a00', marginRight: '5px'}} 
                     size='large'>{props.numberOfStudents}</Avatar> : null
             }
-            <Button type='primary'>Add new student+ </Button>
+            <Button onClick={() => props.handleAddStudentClickEvent()} type='primary'>Add new student+ </Button>
         </Container>
     </div>
 );

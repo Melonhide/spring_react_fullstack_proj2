@@ -6,7 +6,8 @@ import { getAllStudents } from './client'
 import {
   Table,
   Avatar,
-  Spin
+  Spin,
+  Modal
 } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 
@@ -17,12 +18,17 @@ class App extends Component {
 
   state = {
     students:[],
-    isFetching: false
+    isFetching: false,
+    isAddStudentModalVisiable: false
   }
 
   componentDidMount () {
     this.fetchStudents();
   }
+
+  openAddStudentModal = () => this.setState({isAddStudentModalVisiable: true})
+  
+  closeAddStudentModal = () => this.setState({isAddStudentModalVisiable: false})
 
   fetchStudents = ()=>{
     this.setState({
@@ -40,7 +46,7 @@ class App extends Component {
   }
 
   render(){  
-    const{ students, isFetching } = this.state;
+    const{ students, isFetching, isAddStudentModalVisiable } = this.state;
 
     if (isFetching) {
       return(
@@ -95,7 +101,17 @@ class App extends Component {
           columns={columns} 
           pagination={false}
           rowKey='studentId'/>
-          <Footer numberOfStudents={students.length}></Footer>
+          <Modal
+            title="Add new student"
+            visible={isAddStudentModalVisiable}
+            onOk={this.closeAddStudentModal}
+            oncancel={this.closeAddStudentModal}
+            width={1000}>
+              <h1>Hello Modal with Antd</h1>
+          </Modal>
+          <Footer 
+            numberOfStudents={students.length}
+            handleAddStudentClickEvent={this.openAddStudentModal}/>
       </Container>
       );
     }
