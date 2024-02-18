@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
-import { Input, Button } from 'antd';
+import { Input } from 'antd';
+import { Button } from 'antd';
 
 
 const inputBottomMargin = {marginBottom: '10px'};
@@ -9,9 +10,18 @@ class AddStudentForm extends Component {
     render() {
         return (
             <Formik
-                initialValues={{ email: '', password: '' }}
+                initialValues={{ firstName: '', lastName:'', email: '', gender: '' }}
                 validate={values => {
                     const errors = {};
+
+                    if(!values.firstName){
+                        errors.firstName = 'First Name Reuqired'
+                    }
+
+                    if(!values.lastName){
+                        errors.lastName = 'Last Name Reuqired'
+                    }                    
+
                     if (!values.email) {
                         errors.email = 'Required';
                     } else if (
@@ -19,6 +29,13 @@ class AddStudentForm extends Component {
                     ) {
                         errors.email = 'Invalid email address';
                     }
+
+                    if(!values.gender){
+                        errors.gender = 'Gender Reuqired';
+                    } else if(!['MALE', 'male', 'FEMALE', 'female'].includes(values.gender)){
+                        errors.gender = 'Gender must be (MALE, male, FEMALE, female)';
+                    }
+                    
                     return errors;
                 }}
                 onSubmit={(values, { setSubmitting }) => {
