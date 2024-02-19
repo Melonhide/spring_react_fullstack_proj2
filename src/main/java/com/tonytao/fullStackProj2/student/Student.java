@@ -1,6 +1,9 @@
 package com.tonytao.fullStackProj2.student;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.UUID;
+
 public class Student {
 
     private final UUID studentId;
@@ -9,11 +12,11 @@ public class Student {
     private final String email;
     private final Gender gender;
 
-    public Student(UUID studentId,
-                   String firstName,
-                   String lastName,
-                   String email,
-                   Gender gender) {
+    public Student(@JsonProperty("studentId") UUID studentId,
+                   @JsonProperty("firstName") String firstName,
+                   @JsonProperty("lastName") String lastName,
+                   @JsonProperty("email") String email,
+                   @JsonProperty("gender") Gender gender) {
         this.studentId = studentId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -41,7 +44,18 @@ public class Student {
         return gender;
     }
 
-    public enum Gender{
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", gender=" + gender +
+                '}';
+    }
+
+    public enum Gender {
         MALE, FEMALE
     }
 }
