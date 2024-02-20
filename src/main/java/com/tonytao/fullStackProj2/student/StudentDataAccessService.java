@@ -52,4 +52,7 @@ public class StudentDataAccessService {
     }
 
 
+    int insertStudent(UUID newStudentId, Student student) {
+        return 0;
+    }
 }
