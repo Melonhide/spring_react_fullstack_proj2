@@ -4,6 +4,7 @@ import Footer from './Footer';
 import './App.css';
 import { getAllStudents } from './client'
 import AddStudentForm from './forms/AddStudentForm'
+import { errorNotification } from './Notification';
 import {
   Table,
   Avatar,
@@ -43,7 +44,14 @@ class App extends Component {
         students,
         isFetching: false
       })
-    }));
+    }))
+    .catch(error => {
+      const message = error.error.message;
+      errorNotification(message, message);
+      this.setState({
+        isFetching: false
+      });
+    });
   }
 
   render(){  
@@ -111,7 +119,7 @@ class App extends Component {
             width={1000}>
               <AddStudentForm 
                 onSuccess={() => {this.closeAddStudentModal();
-                this.fetchStudents();
+                this.fetchStudents(); 
                 }}
               />
           </Modal>
