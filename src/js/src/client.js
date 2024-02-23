@@ -1,7 +1,7 @@
 import fetch from 'unfetch';
 
 const checkStatus = response => {
-    
+
     if (response.ok){
         return response;
     }else{
@@ -12,10 +12,11 @@ const checkStatus = response => {
         });
         return Promise.reject(error);
     }
+
 }
 
 export const getAllStudents=()=>
-    fetch('api/students');
+    fetch('api/students').then(checkStatus);
 
 export const addNewStudent = student => 
     fetch('api/students', {
@@ -24,4 +25,5 @@ export const addNewStudent = student =>
         },
         method: 'POST',
         body: JSON.stringify(student)
-    });
+    })
+    .then(checkStatus);
