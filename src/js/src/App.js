@@ -25,6 +25,7 @@ class App extends Component {
   }
 
   componentDidMount () {
+    console.log('componentDidMount called');
     this.fetchStudents();
   }
 
@@ -43,7 +44,7 @@ class App extends Component {
       this.setState({
         students,
         isFetching: false
-      })
+      });
     }))
     .catch(error => {
       const message = error.error.message;
