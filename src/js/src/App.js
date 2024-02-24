@@ -26,7 +26,6 @@ class App extends Component {
   }
 
   componentDidMount () {
-    console.log('componentDidMount called');
     this.fetchStudents();
   }
 
