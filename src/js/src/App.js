@@ -48,7 +48,8 @@ class App extends Component {
     }))
     .catch(error => {
       const message = error.error.message;
-      errorNotification(message, message);
+      const description = error.error.error
+      errorNotification(message, description);
       this.setState({
         isFetching: false
       });
