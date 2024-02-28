@@ -1,6 +1,5 @@
 package com.tonytao.fullStackProj2.student;
 
-import com.tonytao.fullStackProj2.exception.ApiRequestException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +18,9 @@ public class StudentController {
     }
     @GetMapping
     public List<Student> getAllStudents(){
-        throw new ApiRequestException("Oops, cannot get all students with custom exception");
-//            throw new IllegalStateException("Oops, cannot get all students");
-            //return studentService.getAllStudents();
+//        throw new ApiRequestException("Oops, cannot get all students with custom exception");
+
+        return studentService.getAllStudents();
     }
 //    @ExceptionHandler(IllegalStateException.class)
 //    public ResponseEntity<Map<String, Object>> handleIllegalStateException(IllegalStateException e) {

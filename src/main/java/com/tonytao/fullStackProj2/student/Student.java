@@ -1,7 +1,6 @@
 package com.tonytao.fullStackProj2.student;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -14,7 +13,6 @@ public class Student {
     private final String firstName;
     @NotBlank
     private final String lastName;
-    @Email
     private final String email;
     @NotNull
     private final Gender gender;
