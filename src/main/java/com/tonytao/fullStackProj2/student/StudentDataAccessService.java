@@ -3,7 +3,6 @@ package com.tonytao.fullStackProj2.student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -71,6 +70,18 @@ public class StudentDataAccessService {
         };
     }
 
-
-
+    @SuppressWarnings("ConstantConditions")
+    boolean isEmailTaken(String email) {
+        String sql = ""+
+                "SELECT EXISTS (" +
+                "SELECT 1 " +
+                "FROM student " +
+                "WHERE email = ?" +
+                ")";
+        return jdbcTemplate.queryForObject(
+                sql,
+                (resultSet, i) -> resultSet.getBoolean(1),
+                new Object[] {email}
+        );
+    }
 }
