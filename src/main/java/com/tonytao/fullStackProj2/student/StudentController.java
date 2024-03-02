@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -22,16 +23,14 @@ public class StudentController {
 
         return studentService.getAllStudents();
     }
-//    @ExceptionHandler(IllegalStateException.class)
-//    public ResponseEntity<Map<String, Object>> handleIllegalStateException(IllegalStateException e) {
-//        Map<String, Object> body = new HashMap<>();
-//        body.put("timestamp", System.currentTimeMillis());
-//        body.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
-//        body.put("error", HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
-//        body.put("message", e.getMessage());  // 将IllegalStateException的消息放入响应体中
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
-//    }
 
+    @GetMapping(path = "{studentId}/courses")
+    public List<StudentCourse> getAllCoursesForStudent(
+            @PathVariable("studentId") UUID studentId) {
+        System.out.println(studentId);
+        return null;
+
+    }
     @PostMapping
     public void addNewStudent(@RequestBody @Valid Student student) {
         studentService.addNewStudent(student);
