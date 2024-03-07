@@ -1,0 +1,9 @@
+server:
+  port: 5000
+
+app:
+  datasource:
+    jdbc-url: jdbc:postgresql://fullstackspringbootdb.cb22sues0vsi.us-east-1.rds.amazonaws.com:5432/amigoscodedemo
+    username: amigoscode
+    password: password
+    pool-size: 30
