@@ -68,7 +68,6 @@
 			<id>demo</id>
 			<build>
 				<plugins>
-
 					<plugin>
 						<groupId>com.github.eirslett</groupId>
 						<artifactId>frontend-maven-plugin</artifactId>
@@ -141,6 +140,9 @@
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+				<activated.profile>demo</activated.profile>
+			</properties>
 		</profile>
 	</profiles>
 	<build>
