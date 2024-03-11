@@ -1,6 +1,6 @@
-spring:
-  profiles:
-    active: @activated.profile@
+#spring:
+#  profiles:
+#    active: @activated.profile@
 
 app:
   datasource:
